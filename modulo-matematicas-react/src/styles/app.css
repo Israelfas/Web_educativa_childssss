@@ -1,0 +1,281 @@
+/* Estilos del modulo de Matematicas — DrawTale Edu. */
+
+:root {
+  color-scheme: light;
+  --azul: #2563eb;
+  --azul-osc: #1d4ed8;
+  --verde: #16a34a;
+  --rojo: #dc2626;
+  --tinta: #1e293b;
+  --gris: #64748b;
+  --borde: #e2e8f0;
+  --fondo: #f1f5f9;
+  --tarjeta: #ffffff;
+  --sombra: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --radio: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--tinta);
+  background:
+    radial-gradient(1200px 500px at 100% -10%, #dbeafe 0, transparent 60%),
+    radial-gradient(1000px 400px at -10% 0, #ede9fe 0, transparent 55%),
+    var(--fondo);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+/* Cabecera ---------------------------------------------------------------- */
+.app__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.app__kicker {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--azul);
+}
+
+.app__titulo {
+  margin: 0.25rem 0;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+}
+
+.app__sub {
+  margin: 0;
+  color: var(--gris);
+}
+
+/* Reto -------------------------------------------------------------------- */
+.reto {
+  background: var(--tarjeta);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reto__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.temporizador {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: var(--azul-osc);
+}
+
+.temporizador--critico {
+  background: #fee2e2;
+  color: var(--rojo);
+  animation: latido 1s ease-in-out infinite;
+}
+
+@keyframes latido {
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.marcador {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.marcador__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 64px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1px solid var(--borde);
+}
+
+.marcador__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--gris);
+}
+
+.marcador__valor {
+  font-size: 1.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.reto__pregunta {
+  text-align: center;
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 800;
+  margin: 1.5rem 0;
+  min-height: 1.4em;
+}
+
+.reto__form {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.reto__input {
+  flex: 1 1 180px;
+  max-width: 260px;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--borde);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.reto__input:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.reto__input.ok {
+  border-color: var(--verde);
+}
+
+.reto__input.error {
+  border-color: var(--rojo);
+}
+
+.reto__input:disabled {
+  background: #f8fafc;
+  cursor: not-allowed;
+}
+
+.reto__feedback {
+  text-align: center;
+  font-weight: 600;
+  min-height: 1.4em;
+  margin: 1rem 0;
+}
+
+.reto__feedback.ok {
+  color: var(--verde);
+}
+
+.reto__feedback.error {
+  color: var(--rojo);
+}
+
+.reto__feedback.info {
+  color: var(--gris);
+}
+
+/* Botones ----------------------------------------------------------------- */
+.btn {
+  font: inherit;
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: transform 0.1s, background 0.15s, opacity 0.15s;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:not(:disabled):active {
+  transform: translateY(1px);
+}
+
+.btn--primario {
+  background: var(--azul);
+  color: #fff;
+}
+
+.btn--primario:not(:disabled):hover {
+  background: var(--azul-osc);
+}
+
+.btn--comenzar {
+  display: block;
+  width: 100%;
+  margin-top: 1.25rem;
+  background: var(--verde);
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.btn--comenzar:not(:disabled):hover {
+  filter: brightness(0.95);
+}
+
+/* Actividades ------------------------------------------------------------- */
+.actividades__titulo {
+  text-align: center;
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+}
+
+.actividades__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.1rem;
+  box-shadow: var(--sombra);
+}
+
+.card h3 {
+  margin: 0 0 0.35rem;
+  color: var(--azul-osc);
+}
+
+.card p {
+  margin: 0;
+  color: var(--gris);
+  font-size: 0.95rem;
+}
+
+.actividades__error {
+  text-align: center;
+  color: var(--rojo);
+}
+
+/* Pie --------------------------------------------------------------------- */
+.app__footer {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--gris);
+  font-size: 0.85rem;
+}
