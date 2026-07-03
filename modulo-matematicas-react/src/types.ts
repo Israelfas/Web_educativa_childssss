@@ -1,9 +1,14 @@
 // Interfaces compartidas del modulo de Matematicas.
 
-/** Una tarjeta de actividad cargada desde el mock JSON. */
-export interface Actividad {
-  label: string;
-  detail: string;
+/** Entidad principal del modulo y del dominio educativo compartido. */
+export interface ActividadEducativa {
+  id: string;
+  titulo: string;
+  area: "Matematicas";
+  descripcion: string;
+  nivel: "Basico" | "Intermedio" | "Avanzado";
+  puntos: number;
+  objetivo: string;
 }
 
 /** Operacion soportada por el generador de preguntas. */
@@ -20,6 +25,13 @@ export interface Pregunta {
 export interface RecordMatematicas {
   mejorPuntaje: number;
   fecha: string;
+}
+
+/** Progreso global de una actividad del modulo. */
+export interface ProgresoActividad {
+  actividadId: string;
+  practicada: boolean;
+  intentos: number;
 }
 
 /** Fases por las que pasa el reto. */

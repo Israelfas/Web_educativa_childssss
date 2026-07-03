@@ -1,44 +1,33 @@
-import { useEffect, useState } from "react";
-import type { Actividad } from "../types";
+import type { ActividadEducativa } from "../types";
 
-/** Carga las actividades desde el mock JSON y las muestra como tarjetas. */
-export default function ListaActividades() {
-  const [actividades, setActividades] = useState<Actividad[]>([]);
-  const [error, setError] = useState(false);
+interface Props {
+  actividades: ActividadEducativa[];
+  onSeleccionar: (id: string) => void;
+}
 
-  useEffect(() => {
-    let activo = true;
-    // BASE_URL respeta el `base: "./"` de Vite tanto en dev como en build.
-    fetch(`${import.meta.env.BASE_URL}data/actividades.json`)
-      .then((respuesta) => {
-        if (!respuesta.ok) throw new Error("No se pudo cargar actividades.json");
-        return respuesta.json();
-      })
-      .then((datos: Actividad[]) => {
-        if (activo) setActividades(datos);
-      })
-      .catch(() => {
-        if (activo) setError(true);
-      });
-    return () => {
-      activo = false;
-    };
-  }, []);
-
-  if (error) {
-    return (
-      <p className="actividades__error">No se pudieron cargar las actividades.</p>
-    );
-  }
-
+/** Renderiza actividades recibidas por props y comunica la seleccion al padre. */
+export default function ListaActividades({ actividades, onSeleccionar }: Props) {
   return (
-    <section className="actividades" aria-label="Actividades del módulo">
-      <h2 className="actividades__titulo">Lo que practicas aquí</h2>
+    <section className="actividades" aria-label="Actividades del modulo">
+      <h2 className="actividades__titulo">Lo que practicas aqui</h2>
+      {actividades.length === 0 && (
+        <p className="actividades__vacio">No hay actividades con ese filtro.</p>
+      )}
       <div className="actividades__grid">
         {actividades.map((actividad) => (
-          <article className="card" key={actividad.label}>
-            <h3>{actividad.label}</h3>
-            <p>{actividad.detail}</p>
+          <article className="card" key={actividad.id}>
+            <span className="card__meta">
+              {actividad.nivel} - {actividad.puntos} pts
+            </span>
+            <h3>{actividad.titulo}</h3>
+            <p>{actividad.descripcion}</p>
+            <button
+              type="button"
+              className="btn btn--secundario"
+              onClick={() => onSeleccionar(actividad.id)}
+            >
+              Ver detalle
+            </button>
           </article>
         ))}
       </div>

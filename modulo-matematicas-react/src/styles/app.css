@@ -31,7 +31,7 @@ body {
 }
 
 .app {
-  max-width: 720px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
 }
@@ -59,6 +59,72 @@ body {
 .app__sub {
   margin: 0;
   color: var(--gris);
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.nav a {
+  color: var(--tinta);
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.nav a.active {
+  color: #fff;
+  border-color: var(--azul);
+  background: var(--azul);
+}
+
+.panel,
+.detalle {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel h2,
+.detalle h2 {
+  margin: 0 0 0.5rem;
+}
+
+.panel p,
+.detalle p {
+  color: var(--gris);
+  margin: 0 0 1rem;
+}
+
+.filtro {
+  display: grid;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--tinta);
+}
+
+.filtro input {
+  width: 100%;
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  border: 2px solid var(--borde);
+  border-radius: 12px;
+  outline: none;
+}
+
+.filtro input:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
 }
 
 /* Reto -------------------------------------------------------------------- */
@@ -235,6 +301,23 @@ body {
   filter: brightness(0.95);
 }
 
+.btn--secundario {
+  background: #f8fafc;
+  color: var(--azul-osc);
+  border: 1px solid var(--borde);
+}
+
+.btn--secundario:not(:disabled):hover {
+  background: #eff6ff;
+}
+
+.btn--link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
 /* Actividades ------------------------------------------------------------- */
 .actividades__titulo {
   text-align: center;
@@ -254,10 +337,20 @@ body {
   border-radius: var(--radio);
   padding: 1.1rem;
   box-shadow: var(--sombra);
+  display: grid;
+  gap: 0.7rem;
+}
+
+.card__meta {
+  color: var(--azul);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .card h3 {
-  margin: 0 0 0.35rem;
+  margin: 0;
   color: var(--azul-osc);
 }
 
@@ -270,6 +363,94 @@ body {
 .actividades__error {
   text-align: center;
   color: var(--rojo);
+}
+
+.actividades__vacio {
+  text-align: center;
+  color: var(--gris);
+}
+
+.detalle__datos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.detalle__datos div {
+  background: #f8fafc;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.detalle__datos dt {
+  color: var(--gris);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.detalle__datos dd {
+  margin: 0.3rem 0 0;
+  font-weight: 700;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.resumen > div,
+.progreso-item {
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.resumen__valor {
+  display: block;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--azul-osc);
+}
+
+.resumen__label {
+  color: var(--gris);
+  font-weight: 700;
+}
+
+.progreso-lista {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.progreso-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.progreso-item h3,
+.progreso-item p {
+  margin: 0;
+}
+
+.progreso-item > span {
+  color: var(--azul-osc);
+  font-weight: 800;
+  white-space: nowrap;
 }
 
 /* Pie --------------------------------------------------------------------- */

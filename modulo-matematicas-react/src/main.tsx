@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import { MatematicasProvider } from "./context/MatematicasContext";
 import "./styles/app.css";
 
 const contenedor = document.getElementById("root");
@@ -10,6 +12,10 @@ if (!contenedor) {
 
 createRoot(contenedor).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <MatematicasProvider>
+        <App />
+      </MatematicasProvider>
+    </BrowserRouter>
   </StrictMode>,
 );

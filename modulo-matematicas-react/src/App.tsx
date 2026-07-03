@@ -1,23 +1,32 @@
-import RetoMatematicas from "./components/RetoMatematicas";
-import ListaActividades from "./components/ListaActividades";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import DetalleActividadView from "./views/DetalleActividadView";
+import InicioView from "./views/InicioView";
+import ProgresoView from "./views/ProgresoView";
+import RetoView from "./views/RetoView";
 
-/** Composicion de la pantalla del modulo de Matematicas. */
+/** Composicion navegable del modulo de Matematicas. */
 export default function App() {
   return (
     <main className="app">
       <header className="app__header">
         <p className="app__kicker">DrawTale Edu</p>
-        <h1 className="app__titulo">Reto de Matemáticas</h1>
+        <h1 className="app__titulo">Modulo de Matematicas</h1>
         <p className="app__sub">
-          Resuelve cuántas operaciones puedas en 90 segundos.
+          Actividades, detalle, reto y progreso con datos simulados.
         </p>
+        <Navbar />
       </header>
 
-      <RetoMatematicas />
-      <ListaActividades />
+      <Routes>
+        <Route path="/" element={<InicioView />} />
+        <Route path="/reto" element={<RetoView />} />
+        <Route path="/progreso" element={<ProgresoView />} />
+        <Route path="/actividades/:id" element={<DetalleActividadView />} />
+      </Routes>
 
       <footer className="app__footer">
-        Módulo de Matemáticas · Hito 3 · React + Vite + TypeScript
+        Modulo de Matematicas - Hito 3 - React + Vite + TypeScript
       </footer>
     </main>
   );
