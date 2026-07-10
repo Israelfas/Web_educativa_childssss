@@ -1,32 +1,42 @@
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useHistorialStore } from "../stores/historial";
 
 const route = useRoute();
 const historial = useHistorialStore();
 
-// Ruta dinamica: el id del cuento se lee directamente de la URL.
 const id = computed(() => route.params.id as string);
 const cuento = computed(() => historial.obtenerPorId(id.value));
 
-// Computed "escribible": lee del store y, al escribir, guarda en el store.
-// Es el binding de formularios (v-model) conectado al estado global.
 const respuesta = computed({
   get: () => cuento.value?.respuesta ?? "",
   set: (texto: string) => {
     if (cuento.value) historial.actualizarRespuesta(id.value, texto);
   },
 });
+
+// Si el store aún no cargó, lo iniciamos aquí para el caso de
+// acceso directo a la URL del cuento (deep link).
+onMounted(async () => {
+  if (historial.cargando) await historial.iniciar();
+});
 </script>
 
 <template>
   <section class="resultado">
-    <p v-if="!cuento" class="resultado__error">
+    <!-- Cargando desde Supabase -->
+    <p v-if="historial.cargando" class="resultado__error" style="color: var(--color-texto-suave)">
+      Cargando cuento…
+    </p>
+
+    <!-- Cuento no encontrado -->
+    <p v-else-if="!cuento" class="resultado__error">
       No encontramos ese cuento.
       <RouterLink to="/historial">Volver al historial</RouterLink>
     </p>
 
+    <!-- Cuento encontrado -->
     <div v-else class="cuento">
       <img :src="cuento.dibujoDataUrl" alt="Dibujo original" class="subida__preview" />
       <p class="cuento__texto">{{ cuento.texto }}</p>
