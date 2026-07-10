@@ -1,8 +1,5 @@
 import type { CuentoIA } from "../types";
 
-// Servicio de llamada a la API de Groq Vision.
-// La key se inyecta desde el .env como VITE_GROQ_KEY (no versionado).
-
 const ENDPOINT = "https://api.groq.com/openai/v1/chat/completions";
 const MODELO = "meta-llama/llama-4-scout-17b-16e-instruct";
 
@@ -10,10 +7,14 @@ const PROMPT = `Eres un maestro de primaria. Analiza este dibujo hecho por un ni
 y responde SOLO con JSON válido, sin markdown ni texto extra, con esta estructura exacta:
 {
   "cuento": "Un cuento corto de 80-100 palabras inspirado en lo que ves en el dibujo. Usa presente. Incluye un personaje con nombre.",
-  "pregunta": "Una pregunta de comprensión lectora sobre el cuento, dirigida al niño."
-}`;
+  "pregunta": "Una pregunta de comprensión lectora sobre el cuento, dirigida al niño.",
+  "palabras": [
+    { "palabra": "palabra1", "definicion": "Explicación simple para un niño de 8 años." },
+    { "palabra": "palabra2", "definicion": "Explicación simple para un niño de 8 años." }
+  ]
+}
+El campo "palabras" debe contener 2 o 3 palabras del cuento que puedan ser nuevas o difíciles para un niño de primaria.`;
 
-/** Envia el dibujo a la IA y devuelve el cuento + la pregunta. */
 export async function generarCuento(
   base64: string,
   mediaType: string,
