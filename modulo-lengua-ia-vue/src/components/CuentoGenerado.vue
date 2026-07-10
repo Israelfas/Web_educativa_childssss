@@ -182,13 +182,14 @@ function guardarConEfecto() {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 6px 14px;
+  padding: 7px 15px;
   border-radius: 999px;
-  border: 1.5px solid #c8dfc0;
-  background: #f0f9f0;
-  color: #1b4332;
+  border: 1.5px solid var(--borde, #e6dcc0);
+  background: var(--bosque-tenue, #f0f9f0);
+  color: var(--bosque, #1b4332);
+  font-family: var(--fuente-ui, "Baloo 2", sans-serif);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -196,28 +197,30 @@ function guardarConEfecto() {
 .btn-tool:hover { background: #dff0d8; }
 
 .btn-tool--activo {
-  background: #1b4332;
+  background: var(--bosque, #1b4332);
   color: #fff;
-  border-color: #1b4332;
+  border-color: var(--bosque, #1b4332);
 }
 
 .cuento__palabras-hint {
   font-size: 12px;
-  color: #6b7a72;
+  font-family: var(--fuente-ui, "Baloo 2", sans-serif);
+  font-weight: 600;
+  color: var(--gris, #6b7a72);
   margin-left: auto;
 }
 
 /* ===== CAJA DEL CUENTO ===== */
 .cuento__caja {
-  background: #faf7f0;
+  background: var(--pergamino, #faf7f0);
   border-radius: 12px;
-  padding: 16px 20px;
-  border: 1px solid #e8e0d0;
+  padding: 18px 22px;
+  border: 1px solid var(--borde, #e8e0d0);
   transition: background 0.3s;
 }
 
 .cuento__caja--leyendo {
-  background: #f0f9f0;
+  background: var(--bosque-tenue, #f0f9f0);
   border-color: #a8c9b5;
   box-shadow: 0 0 0 3px rgba(27, 67, 50, 0.08);
 }
@@ -282,8 +285,8 @@ function guardarConEfecto() {
   display: flex;
   gap: 10px;
   align-items: flex-start;
-  background: #fef9ec;
-  border-left: 4px solid #d4a017;
+  background: var(--dorado-tenue, #fef9ec);
+  border-left: 4px solid var(--dorado, #d4a017);
   border-radius: 10px;
   padding: 12px 14px;
 }
@@ -292,7 +295,8 @@ function guardarConEfecto() {
 
 .cuento__pregunta {
   margin: 0;
-  font-weight: 600;
+  font-family: var(--fuente-ui, "Baloo 2", sans-serif);
+  font-weight: 700;
   line-height: 1.5;
   color: #1c2a24;
 }
