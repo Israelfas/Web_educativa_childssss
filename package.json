@@ -5,6 +5,6 @@
     "build": "npm run build:react && npm run build:vue && npm run build:contenedora",
     "build:react": "cd modulo-matematicas-react && npm install && npm run build",
     "build:vue": "cd modulo-lengua-ia-vue && npm install && npm run build",
-    "build:contenedora": "mkdir -p contenedora/dist/react contenedora/dist/vue && cp -r modulo-matematicas-react/dist/. contenedora/dist/react/ && cp -r modulo-lengua-ia-vue/dist/. contenedora/dist/vue/ && cd contenedora && npm install && npm run build"
+    "build:contenedora": "mkdir -p contenedora/public/react contenedora/public/vue && cp -r modulo-matematicas-react/dist/. contenedora/public/react/ && cp -r modulo-lengua-ia-vue/dist/. contenedora/public/vue/ && cd contenedora && npm install && npm run build"
   }
 }
