@@ -7,9 +7,9 @@ const supabase: SupabaseClient | null =
   SUPABASE_URL && SUPABASE_ANON_KEY ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null
 
 const MODULOS = [
-  { id: 'react', label: 'Matemáticas', src: '/react/' },
-  { id: 'vue', label: 'Lengua con IA', src: '/vue/' },
-  { id: 'angular', label: 'Inglés', src: '/angular/' },
+  { id: 'react', label: 'Matemáticas', src: 'http://localhost:5174/react/' },
+  { id: 'vue', label: 'Lengua con IA', src: 'http://localhost:5175/vue/' },
+  { id: 'angular', label: 'Inglés', src: 'http://localhost:4200/angular/' },
 ]
 
 function renderizar() {
